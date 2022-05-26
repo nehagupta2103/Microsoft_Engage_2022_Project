@@ -414,8 +414,21 @@ body {
 	color: #999;  
 }
 
+.app-logo-container {
+	flex: 1;
+  }
+  
+.app-logo {
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size: 40px;
+	color: rgba(14, 244, 49, 0.621) ;
+    margin-bottom: 30px;
+	margin-left: -50px;
+  }
+
 .app-title{
-	font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+/*	font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
+	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: #fff;
     font-weight: bold;
     margin-top: 30px;
