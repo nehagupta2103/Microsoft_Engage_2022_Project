@@ -1,0 +1,6 @@
+node_modules
+.ipynb_checkpoints/data.csv
+.ipynb_checkpoints/main_data.csv
+.ipynb_checkpoints/new_data.csv
+datasets
+main_data.csv
