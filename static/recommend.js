@@ -236,7 +236,7 @@ function showMovies(data) {
              <center> <h3>Overview</h3> </center>
              <justify> ${overview} </justify>
               <br/> 
-           <center>   <button class="know-more" id="${id}">Click to watch video clips</button> </center>
+           <center> <button class="know-more" id="${id}">Click to watch video clips</button> </center>
           </div>
       
       `
