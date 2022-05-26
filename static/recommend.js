@@ -518,12 +518,13 @@ function get_movie_cast(movie_id,my_api_key){
       url:"https://api.themoviedb.org/3/movie/"+movie_id+"/credits?api_key="+my_api_key,
       async:false,
       success: function(my_movie){
-        if(my_movie.cast.length>=10){
+        top_cast = [0, 1, 2];
+      /*  if(my_movie.cast.length>=10){
           top_cast = [0,1,2,3,4,5,6,7,8,9];
         }
         else {
           top_cast = [0,1,2,3,4];
-        }
+        } */
         for(var my_cast in top_cast){
           cast_ids.push(my_movie.cast[my_cast].id)
           cast_names.push(my_movie.cast[my_cast].name);
