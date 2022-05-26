@@ -354,13 +354,13 @@ function load_details(my_api_key,title){
 
     success: function(movie){
       if(movie.results.length<1){
-        $('.fail').css('display','block');
+        $('.movie_not_found').css('display','block');
         $('.results').css('display','none');
         $("#loader").delay(500).fadeOut();
       }
       else{
         $("#loader").fadeIn();
-        $('.fail').css('display','none');
+        $('.movie_not_found').css('display','none');
         $('.results').delay(1000).css('display','block');
         var movie_id = movie.results[0].id;
         var movie_title = movie.results[0].original_title;
@@ -382,12 +382,12 @@ function movie_recs(movie_title,movie_id,my_api_key){
     data:{'name':movie_title},
     success: function(recs){
       if(recs=="Sorry! The movie you requested is not in our database. Please check the spelling or try with some other movies"){
-        $('.fail').css('display','block');
+        $('.movie_not_found').css('display','block');
         $('.results').css('display','none');
         $("#loader").delay(500).fadeOut();
       }
       else {
-        $('.fail').css('display','none');
+        $('.movie_not_found').css('display','none');
         $('.results').css('display','block');
         var movie_arr = recs.split('---');
         var arr = [];
