@@ -425,6 +425,48 @@ body {
 	color: #999;  
 }
 
+/*.play-btn{
+	width: 65px;
+	height: 65px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	border: 1px solid #dadada48;
+	z-index: 3;
+	background-color: rgba(255, 0, 0, 0.185);
+	position: relative;
+	margin-top: -400px; 
+}
+
+.play-btn a{
+	width: 65px;
+	height: 65px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	transition: all ease 0.3s;
+  }
+
+  .play-btn a:hover{
+	  background-color: #e70634;
+	  transition: all ease 0.3s;
+  }
+
+  .play-btn i{
+	  color: #ffffff;
+  }
+
+  .play-btn-container{
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  margin: auto;
+	  width: 100%;
+	  max-width: 500px;
+  } */
+
 .app-logo-container {
 	flex: 1;
   }
@@ -1152,3 +1194,46 @@ img {
 	margin-bottom: 400px;
 	border-radius: 10px;
   }
+
+  /* --play-btn---
+  .play-btn{
+	  width: 65px;
+	  height: 65px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  border-radius: 50%;
+	  border: 1px solid #dadada48;
+	  z-index: 3;
+	  background-color: rgba(255, 0, 0, 0.185);
+	  position: relative;
+	  margin-bottom: 400px;
+  }
+
+  .play-btn a{
+	width: 65px;
+	height: 65px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	transition: all ease 0.3s;
+  }
+
+  .play-btn a:hover{
+	  background-color: #e70634;
+	  transition: all ease 0.3s;
+  }
+
+  .play-btn i{
+	  color: #ffffff;
+  }
+
+  .play-btn-container{
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  margin: auto;
+	  width: 100%;
+	  max-width: 500px;
+  } */
