@@ -4,7 +4,7 @@
 	color: #fff;
 	margin-left: auto;
 	resize: none;
-	margin-right: auto;
+	margin-right: auto; 
 }
 
 .movie-content {
@@ -231,6 +231,7 @@ h6 {
     box-shadow: 0px 1px 15px 4px rgba(250,250,250,1);
 	width: 250px;
 	margin-top: 30px;
+	margin-bottom: 30px;
 }
 
 .card:hover {
@@ -356,7 +357,7 @@ main{
 	max-height: 100%;
 	background-color: #000;
 	position: absolute; 
-	align-items: center;
+	text-align: justify;
 	left: 2px;
 	right: 2px;
 	padding: 1 rem;
@@ -407,7 +408,7 @@ iframe{
 }
 
 :root {
-	--primary-color: #e50914;
+	--primary-color: #4dbf00;
 	--dark-color: #141414;
 	--light-color: #f4f4f4;
 }
@@ -746,7 +747,6 @@ body {
   
   .navbar-container.active {
 	background-color: white;
-  
 	color: black;
   }
   
@@ -1115,13 +1115,13 @@ img {
 .current{
     padding: 10px 20px;
     border-radius: 50%;
-    border: 5px solid orange;
+    border: 5px solid #4dbf00;
     font-size: 20px;
     font-weight: 600;
 }
 
 .know-more{
-    background-color: orange;
+    background-color: #4dbf00;
     color:white;
     font-size: 16px;
     font-weight: bold;
@@ -1243,3 +1243,18 @@ img {
 	  width: 100%;
 	  max-width: 500px;
   } */
+
+  .container_for_movies {
+	background-image: url("../static/container_for_movies_bg.jpg");
+	width: 1150px;
+	-webkit-box-shadow: 0px 1px 15px 4px rgba(250,250,250,1);
+    -moz-box-shadow: 0px 1px 15px 4px rgba(250,250,250,1);
+    box-shadow: 0px 1px 15px 4px rgba(250,250,250,1);
+	border-radius: 40px;
+  }
+  
+  .scroll-down {
+	color: white;
+	font-size: 50px;
+	margin-bottom: 40px;
+  }

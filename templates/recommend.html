@@ -23,11 +23,12 @@
 <body id="content" style="font-family: 'Noto Sans JP', sans-serif;">
 	<div class="results">
 	    <center>
-	      <h2 id="name" class="text-uppercase">{{title}}</h2>
+	      <h1 id="name" class="text-uppercase">{{title}}</h1>
 	    </center>
 	</div>
 	<br>
 
+  <div class = "container_for_movies">
 <div id="mycontent">
     <div id="mcontent">
       <div class="poster-lg">
@@ -48,17 +49,49 @@
         
       </div>
     </div>
-    
+  </div>  
 </div>
 
-
 <br/>
-	
-{% for name, details in cast_details.items() if not cast_details.hidden %}
+
+<div style="color:white;">
+  <center><h3 style="color:white">Scroll down to the bottom to check audience's reviews and the top-3 cast </h3></center>   
+</div> 
+
+
+<center><i class="scroll-down fa fa-angle-double-down" aria-hidden="true"></i></center>
+
+      {% if movie_cards|length > 1 %}
+
+
+    <!--<div class="movie" style="color: #E8E8E8;">
+      <center><h3>RECOMMENDATIONS FOR YOU</h3></center>
+    </div>  -->
+    <center><h1>RECOMMENDATIONS FOR YOU</h1></center>
+
+    <div class="movie-content">
+      {% for poster, title in movie_cards.items() if not movie_cards.hidden %}
+        <div class="card" style="width: 15rem;" title="{{title}}" onclick="recommendcard(this)">
+          <div class="imghvr">
+            <img class="card-img-top" height="360" width="240" alt="{{title}} - poster" src={{poster}}>
+            <figcaption class="fig">
+              <button class="card-btn btn btn-danger"> Click Here </button>
+            </figcaption>
+           </div>
+          <div class="card-body">
+            <h5 class="card-title">{{title|capitalize}}</h5>
+          </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    {% endif %}
+
+    {% for name, details in cast_details.items() if not cast_details.hidden %}
   <div class="modal fade" id="{{details[0]}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel3" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header" style="background-color: #e50914;color: white;">
+        <div class="modal-header" style="background-color: #4dbf00;color: white;">
           <h5 class="modal-title" id="exampleModalLabel3">{{name}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" style="color: white">&times;</span>
@@ -84,7 +117,9 @@
   </div>
   {% endfor %}
   
+
   {% if casts|length > 1 %}
+
   <div class="movie" style="color: #E8E8E8;">
     	<center>
 		<h3>TOP THREE CAST</h3>
@@ -112,7 +147,10 @@
 
   <center>
     {% if reviews %}
-    <h2 style="color:white">USER REVIEWS</h2>
+    <div class="movie" style="color: #E8E8E8;">
+      <center><h3>AUDIENCE REVIEWS</h3></center>
+    </div>
+   <!-- <h2 style="color:white">USER REVIEWS</h2> -->
      <div class="col-md-12" style="margin: 0 auto; margin-top:25px;">
         <table class="table table-bordered" bordercolor="white" style="color:white">
             <thead>
@@ -124,7 +162,7 @@
     
             <tbody>
 		      {% for review, status in reviews.items() if not reviews.hidden %}
-		      <tr style="background-color:#e5091485;">
+		      <tr style="background-color:#4dbf00;">
               	  <td>{{review}}</td>
 	              <td><center>
 	                  {{status}} : 
@@ -141,36 +179,12 @@
  		 </table>
     </div>
     {% else %}
+  
     <div style="color:white;">
-      <h1 style="color:white"> This movie is not released yet. Stay tuned! </h1>
-    </div>
+   <center><h3 style="color:white"> This movie is not released yet. Stay tuned for the reviews! </h3></center>   
+    </div> 
     {% endif %}
   </center>  
-
-      {% if movie_cards|length > 1 %}
-
-
-      <div class="movie" style="color: #E8E8E8;">
-      <center><h3>RECOMMENDATIONS FOR YOU</h3></center>
-    </div>
-
-    <div class="movie-content">
-      {% for poster, title in movie_cards.items() if not movie_cards.hidden %}
-        <div class="card" style="width: 15rem;" title="{{title}}" onclick="recommendcard(this)">
-          <div class="imghvr">
-            <img class="card-img-top" height="360" width="240" alt="{{title}} - poster" src={{poster}}>
-            <figcaption class="fig">
-              <button class="card-btn btn btn-danger"> Click Here </button>
-            </figcaption>
-           </div>
-          <div class="card-body">
-            <h5 class="card-title">{{title|capitalize}}</h5>
-          </div>
-        </div>
-    {% endfor %}
-    </div>
-
-    {% endif %}
 
     
     </div>

@@ -19,7 +19,7 @@ vectorizer = pickle.load(open('D:/Microsoft/movie cinema rec/AJAX-Movie-Recommen
 
 def create_similarity():
    # data = pd.read_csv('main_data.csv')
-    data = pd.read_csv('D:/Microsoft/movie cinema rec/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/.ipynb_checkpoints/main_data.csv')
+    data = pd.read_csv('C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/main_data_till_2022.csv')
     # creating a count matrix
     cv = CountVectorizer()
     count_matrix = cv.fit_transform(data['comb'])
@@ -55,7 +55,7 @@ def convert_to_list(my_list):
     return my_list
 
 def get_suggestions():
-    data = pd.read_csv('D:\Microsoft\movie cinema rec\AJAX-Movie-Recommendation-System-with-Sentiment-Analysis\.ipynb_checkpoints\main_data.csv')
+    data = pd.read_csv('C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/main_data_till_2022.csv')
     return list(data['movie_title'].str.capitalize())
 
 app = Flask(__name__)

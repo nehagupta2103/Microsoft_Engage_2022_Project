@@ -560,3 +560,80 @@ function get_movie_posters(arr,my_api_key){
   }
   return arr_poster_list;
 }
+
+
+// getting recommendations
+function get_recommendations(movie_id, my_api_key) {
+  rec_movies = [];
+  rec_posters = [];
+  rec_movies_org = [];
+  rec_year = [];
+  rec_vote = [];
+  
+  $.ajax({
+    type: 'GET',
+    url: "https://api.themoviedb.org/3/movie/"+movie_id+"/recommendations?api_key="+my_api_key,
+    async: false,
+    success: function(recommend) {
+      for(var recs in recommend.results) {
+        rec_movies.push(recommend.results[recs].title);
+        rec_movies_org.push(recommend.results[recs].original_title);
+        rec_year.push(new Date(recommend.results[recs].release_date).getFullYear());
+        rec_vote.push(recommend.results[recs].vote_average);
+        if(recommend.results[recs].poster_path){
+          rec_posters.push("https://image.tmdb.org/t/p/original"+recommend.results[recs].poster_path);
+        }
+        else {
+          rec_posters.push("static/default.jpg");
+        }
+      }
+    },
+    error: function(error) {
+      alert("Invalid Request! - "+error);
+      $("#loader").delay(500).fadeOut();
+    }
+  });
+  return {rec_movies:rec_movies,rec_movies_org:rec_movies_org,rec_posters:rec_posters,rec_year:rec_year,rec_vote:rec_vote};
+}
+
+// getting closest match to the requested movie name using Levenshtein distance
+function similarity(s1, s2) {
+  var longer = s1;
+  var shorter = s2;
+  if (s1.length < s2.length) {
+    longer = s2;
+    shorter = s1;
+  }
+  var longerLength = longer.length;
+  if (longerLength == 0) {
+    return 1.0;
+  }
+  return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+}
+
+function editDistance(s1, s2) {
+  s1 = s1.toLowerCase();
+  s2 = s2.toLowerCase();
+
+  var costs = new Array();
+  for (var i = 0; i <= s1.length; i++) {
+    var lastValue = i;
+    for (var j = 0; j <= s2.length; j++) {
+      if (i == 0)
+        costs[j] = j;
+      else {
+        if (j > 0) {
+          var newValue = costs[j - 1];
+          if (s1.charAt(i - 1) != s2.charAt(j - 1))
+            newValue = Math.min(Math.min(newValue, lastValue),
+              costs[j]) + 1;
+          costs[j - 1] = lastValue;
+          lastValue = newValue;
+        }
+      }
+    }
+    if (i > 0)
+      costs[s2.length] = lastValue;
+  }
+  return costs[s2.length];
+}
