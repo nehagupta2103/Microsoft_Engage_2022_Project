@@ -10,13 +10,13 @@ import pickle
 import requests
 
 ################## loaded the NLP model and tfidf vectorizer to carry out the sentiment Analysis############## 
-filename = 'C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/Sentiment_NLP_Model.pkl'
+filename = 'Sentiment_NLP_Model.pkl'
 clf = pickle.load(open(filename, 'rb'))
-vectorizer = pickle.load(open('C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/file_transform.pkl', 'rb'))
+vectorizer = pickle.load(open('file_transform.pkl', 'rb'))
 
 
 def create_similarity():
-    data = pd.read_csv('C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/main_data_till_2022.csv')
+    data = pd.read_csv('main_data_till_2022.csv')
 
     # creating a count matrix
     cv = CountVectorizer()
@@ -55,7 +55,7 @@ def convert_to_list(my_list):
 
 #function to get suggestions while typing out the movie in the placeholder
 def get_suggestions():
-    data = pd.read_csv('C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/main_data_till_2022.csv')
+    data = pd.read_csv('main_data_till_2022.csv')
     return list(data['movie_title'].str.capitalize())
 
 app = Flask(__name__)
