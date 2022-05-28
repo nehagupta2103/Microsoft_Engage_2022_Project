@@ -161,7 +161,7 @@ body {
 	cursor: pointer;
   }
 
-/*****************Movie_Slider on the home page******************/
+/*****************Movie_Slider/Carousel on the home page******************/
   .carousel-item {
 	width: 900px;
 	height: 520px;
@@ -228,7 +228,6 @@ body {
   }
 
 .app-title{
-/*	font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: #fff;
     font-weight: bold;
@@ -385,156 +384,8 @@ img {
 	font-weight: 700;
 }
 
-/*.navbar{
-	width: 100%;
-	height: 50px;
-	background-color: #000
-}
 
-.navbar-container {
-	display: flex;
-	align-items: center;
-	padding: 0 50px;
-	height: 100%;
-	color: white;
-	font-family: "Sen", sans-serif;
-  }
-
-  .menu-container {
-	flex: 6;
-  }
-  
-  .menu-list {
-	display: flex;
-	list-style: none;
-  }
-  
-  .menu-list-item {
-	margin-right: 150px;
-  }
-  
-  .menu-list-item.active {
-	font-weight: bold;
-  }
-
-  .profile-container {
-	flex: 2;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-  }
-  
-  .profile-text-container {
-	margin: 0 20px;
-  }
-  
-  .profile-picture {
-	width: 32px;
-	height: 32px;
-	border-radius: 50%;
-	object-fit: cover;
-  }
-
-  .toggle {
-	width: 40px;
-	height: 20px;
-	background-color: white;
-	border-radius: 30px;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	position: relative;
-  }
-  
-  .toggle-icon {
-	color: goldenrod;
-  }
-  
-  .toggle-ball {
-	width: 18px;
-	height: 18px;
-	background-color: black;
-	position: absolute;
-	right: 1px;
-	border-radius: 50%;
-	cursor: pointer;
-	transition: 1s ease all;
-  }
-
-  .content {
-	/*	background-image: url("../static/image.jpg"); 
-	   background-color: #181818;
-	   font-family: 'Noto Sans JP', sans-serif; 
-	   background-color: #000;
-   
-   } 
-
-  .container {
-	background-color: #151515;
-	min-height: calc(100vh - 50px);
-	color: white;
-  }
-  
-  .content-container {
-	margin-left: 50px;
-  }
-  
-  .featured-content {
-	height: 100vh;
-	padding: 50px;
-  }
-  
-  .featured-title {
-	width: 400px;
-  }
-  
-  .featured-desc {
-	width: 500px;
-	color: black;
-	margin: 30px 0;
-  }
-
-  .container.active {
-	background-color: white;
-  }
-  
-  .movie-list-title.active {
-	color: black;
-  }
-  
-  .navbar-container.active {
-	background-color: white;
-  
-	color: black;
-  }
-  
-  .sidebar.active{
-	  background-color: white;
-  }
-  
-  .left-menu-icon.active{
-	  color: black;
-  }
-  
-  .toggle.active{
-    background-color: black;
-}
-
-.toggle-ball.active{
-    background-color: white;
-    transform: translateX(-20px);
-}
-
-.content.active {
-	/*	background-image: url("../static/image.jpg"); 
-	   background-color: #181818;
-	   font-family: 'Noto Sans JP', sans-serif; 
-	   background-color: #fff;
-   
-   }  */
-
-
-/* this class is for genre wise recommendation card on home page*/
+/*********************GENRE-BASED RECOMMENDATION ENGINE: HOME PAGE****************************/
 .movie {
 	color: #fff;
 	margin-left: auto;
@@ -597,9 +448,6 @@ h1 {
     text-shadow: #000000 0px 0px 13px;
  }
 
-.github-corner:hover .octo-arm {
-  	animation: octocat-wave 560ms ease-in-out;
-}
 
 .fa-arrow-up {
 	font-size: 1.5em;
@@ -965,7 +813,6 @@ iframe{
 	text-align: center;
 	border: none;
 	cursor: pointer;
-	/*margin-right: 0.5rem; */
 	transition: opacity 0.2s ease-in;
 	outline: none;
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
@@ -999,7 +846,7 @@ iframe{
 }
 
 
-
+/******************************TAGS CONATINING GENRES***********************/
 #tags{
     
     display:flex;
@@ -1017,7 +864,6 @@ iframe{
     cursor: pointer;
 	margin-bottom: 10px;
     padding:10px 20px;
-  /*  background-color: #4dbf00; */
 	background-color: transparent;
     border-radius: 50px;
     margin:5px;
@@ -1072,7 +918,7 @@ iframe{
 
 /* The Overlay (background) */
 .overlay {
-    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+    /*********** Height & width depends on how you want to reveal the overlay ***********/   
     height: 100%;
     width: 0;
     position: fixed; /* Stay in place */
@@ -1085,7 +931,7 @@ iframe{
     transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
   }
   
-  /* Position the content inside the overlay */
+  /******************** Position the content inside the overlay *******************/
   .overlay-content {
     position: relative;
     top: 10%; /* 25% from the top */
@@ -1093,8 +939,16 @@ iframe{
     text-align: center; /* Centered text/links */
     margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
   }
+
+  .featured-title2 {
+	width: 200px;
+	height: 90px;
+	position: sticky;
+	margin-bottom: 400px;
+	border-radius: 10px;
+  }
   
-  /* The navigation links inside the overlay */
+  /******************* The navigation links inside the overlay *******************/
   .overlay a {
     padding: 8px;
     text-decoration: none;
@@ -1104,12 +958,12 @@ iframe{
     transition: 0.3s; /* Transition effects on hover (color) */
   }
   
-  /* When you mouse over the navigation links, change their color */
+  /******************* When you mouse over the navigation links, change their color ***************/
   .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
   }
   
-  /* Position the close button (top right corner) */
+  /************** Position the close button (top right corner) *****************/
   .overlay .closebtn {
     position: absolute;
     top: 20px;
@@ -1117,15 +971,6 @@ iframe{
     font-size: 60px;
   }
 
-
-
-  .featured-title2 {
-	width: 200px;
-	height: 90px;
-	position: sticky;
-	margin-bottom: 400px;
-	border-radius: 10px;
-  }
 
   /* --play-btn---
   .play-btn{
