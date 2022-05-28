@@ -34,13 +34,16 @@ cd Movieflix
 >Home Page
 <img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Home-Page.png">
 
->Movie Searc Box
+>Light Theme of the Home Page
+<img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Light%20Theme.png">
+
+>Movie Search Box
 <img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Movie%20Search%20Box.png">
 
 >Movie Suggestions
 <img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Movie%20Suggestions.png">
 
->Genre-based recommendation engine
+>Genre-based Recommendation Engine
 <img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Genre-Based%20Recommender.png">
 
 >Overview Hover of Movies
@@ -52,7 +55,7 @@ cd Movieflix
 >Loader
 <img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Loader.png">
 
->Searched Movie for recommendation
+>Searched Movie for Recommendation
 <img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Avatar_2_2022Movie.png">
 
 >Content Based Recommendations
@@ -61,11 +64,35 @@ cd Movieflix
 >Top 3 Cast of the searched movie
 <img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Top%203%20Cast.png">
 
->Sentiment Analysis of Reviews
+>Sentiment Analysis on Reviews
 <img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Sentiment%20Analysis.png">
 
->Light Theme of the Home Page
-<img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Light%20Theme.png">
+## Features
+</br>
+
+1. Genre-Based Recommendation Engine:
+   1. const genresGet movies by clickig on one or multiple genres 
+   2. highlightSelection(): Selected genre gets highlighted
+   3. Color coded the IMDB ratings using function getColor(): (green (good), orange(neutral), red(bad)) 
+   4. Overview Hover: Overview of the movie appears as the cursor is moved on it
+   5. "Click to watch clips button": Youtube video clips of the selected movie is fetched from youtube.com, and opens on the same page in another frame, uses showMovies() function
+   6. openNav function: oepns when someone clicks on the span eleent, fetches video clips and opens up a new frame to showcase the videos
+   7. closeNav function:  closes when someone clciks on the 'x'(close) symbol inside the overlay
+   
+2. Content-Based Recommendation Engine:
+   1. Extracted movies of the year 2018, 2019, 2020, 2021 and 2022 from wikipedia, pre-processed the fetched data and combined it with the older dataset using pandas, numpy, tmdbv3api and json.
+   2. Built a Machine Learning Algorithm to recommend similar movies using `Similarity Matrix` and used `Cosine Similarity Algorithm` to do so.
+   3. Features used to find the similarity and train the ML Model: director_name, actor_1_name, actor_2_name,actor_3_name, genres, movie_title
+   4. Used Scikit-learn's `CountVectorizer` to convert text file into a vector of term/token counts
+   5. Combined_features: Combined all the features into a single string 'comb'
+   6. Used `CountVectorizer's fit.tranform` to count the number of texts, then printed the transformed 'count_matrix' to array.
+   7. Used Cosine Similarity to find similarity between two movies, output value ranged from 0 to 1, here, ) means no similarity and 1 means both the movies are 100% similar.
+   8. Used movie_index of the searched movie to generate a list of similar movies with the similarity score of each index.
+   9. `Sorting Similar Movies`: Used the parameter 'reverse=True' since we want the list in the descending order, with the most similar item at the top.
+   10. Used `Python's flask`  and called load_details function to fetch details of the similar movies using their movie ids.
+   
+
+
 
 
 
