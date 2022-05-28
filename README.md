@@ -91,7 +91,19 @@ cd Movieflix
    9. `Sorting Similar Movies`: Used the parameter 'reverse=True' since we want the list in the descending order, with the most similar item at the top.
    10. Used `Python's flask`  and called load_details function to fetch details of the similar movies using their movie ids.
    
+3. Sentiment Analysis:
+   1. Scrapped reviews of the searched movies from tmdb's site using a Python Library `Beautiful Soup` to pull data out of XML files.
+   2. Used `TfidfVectorizer` to map the most frequent words to feature indices, and computed a frequency matrix.
+   3. Used `Multinomial Naive Bayes` Classification Algorithm to guess the tag (in this case: Positive or Negative Reviews) of the text by calculating each tag's likelihood.
+   4. Achieved an accuracy score of `98.7716` after applying `NLP's` Multinomial Naive Bayes for classification.
+   5. Pickled the python file to store the database and unpickled it in main.py file.
 
+4. Other features:
+   1. Dark/Light Theme: Created a functional toggle to change theme of the page from dark to light and vice-versa.
+   2. Carousel Component: Built a Movie Slider on the homepage
+   3. Search Box/Placeholder: Gives suggestions of movies while typing
+   4. Top-3 Cast: Fetches details of top 3 cast of the searched movie from tmdb's API
+   5. Siderbar and NavBar: Built a non-functional siderbar and navbar to contain toggle, profile and other menu_list items.
 
 
 

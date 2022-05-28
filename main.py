@@ -134,7 +134,7 @@ def recommend():
     soup_result = soup.find_all("div",{"class":"text show-more__control"})
 
     reviews_list = [] # list of reviews
-    reviews_status = [] # list of comments (good or bad)
+    reviews_status = [] # list of comments (Positive or Negative)
     for reviews in soup_result:
         if reviews.string:
             reviews_list.append(reviews.string)
