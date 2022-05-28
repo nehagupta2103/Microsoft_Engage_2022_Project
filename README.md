@@ -24,3 +24,9 @@ Note : If you want to contribute, first fork the original repository and clone t
 git clone https://github.com/USERNAME/Microsoft-Engage-21-Project.git
 cd Movieflix
 ```
+
+#### Steps to run the project on your local machine
+
+- Install all the dependencies mentioned in the [requirements.txt](https://github.com/nehagupta2103/Movieflix/blob/main/requirements.txt) file with the command `pip install -r requirements.txt` 
+- Open terminal from the project directory and run the file `main.py` by executing the command `python main.py`.
+- Visit your app at [http://127.0.0.1:5000/](http://127.0.0.1:5000/) :tada:
