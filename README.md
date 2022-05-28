@@ -105,6 +105,40 @@ cd Movieflix
    4. Top-3 Cast: Fetches details of top 3 cast of the searched movie from tmdb's API
    5. Siderbar and NavBar: Built a non-functional siderbar and navbar to contain toggle, profile and other menu_list items.
 
+## Technology Stack 
+</br>
+Please get familiar with the components of the project in order to be able to contribute.
+
+### components
+- CSS: Styling web pages, html files
+- Javascript: Primary programming language
+- HTML: Used to give structure to the Web pages
+- Flask: Web-framework written in python, used to build the Movie Recommendation Engine in the back-end
+- Python: used to pre-process the movie data and train the Machine Learning Model
+- TMDB API: Used tmdb's database to fetch movie details, posters and, other relevant information
+
+
+## Requirements
+</br>
+
+- numpy>=1.9.2
+- scipy>=0.15.1
+- Flask==1.1.1
+- gunicorn==19.9.0
+- Jinja2==2.11.3
+- urllib3==1.26.5
+- requests==2.23.0
+- pickleshare==0.7.5
+- nltk==3.5
+- scikit-learn>=0.18
+- pandas>=0.19
+- beautifulsoup4==4.9.1
+- jsonschema==3.2.0
+- tmdbv3api==1.6.1
+- lxml==4.6.3
+- MarkupSafe==1.1.1
+- Werkzeug==0.15.5
+
 
 
 
