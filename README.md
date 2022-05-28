@@ -62,7 +62,7 @@ cd Movieflix
 <img width="555" alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Top%203%20Cast.png">
 
 >Sentiment Analysis of Reviews
-<img width="555" alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Sentiment%20Analysis.png">
+<img alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Sentiment%20Analysis.png">
 
 >Light Theme of the Home Page
 <img width="555" alt=" " src="https://github.com/nehagupta2103/Movieflix/blob/main/Screenshots/Light%20Theme.png">
