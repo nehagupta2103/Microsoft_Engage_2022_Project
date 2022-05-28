@@ -139,8 +139,8 @@ Please get familiar with the components of the project in order to be able to co
 - MarkupSafe==1.1.1
 - Werkzeug==0.15.5
 
+## Contributing
 
-
-
-
+> Feel free to **contribute** :
+- When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
