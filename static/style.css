@@ -161,6 +161,17 @@ body {
 	cursor: pointer;
   }
 
+/*****************Movie_Slider on the home page******************/
+  .carousel-item {
+	width: 900px;
+	height: 520px;
+	margin-left: 106px;
+	border-radius: 5px;
+	counter-increment: carousel-cell;
+	transition: transform 0.5s;
+	transform: scale(1);
+  }
+
 
 /*.play-btn{
 	width: 65px;
@@ -308,7 +319,7 @@ img {
 
 .showcase-top {
 	position: relative;
-	z-index: 2;
+	z-index: 5;
 	height: 90px;
 }
 
@@ -954,7 +965,7 @@ iframe{
 	text-align: center;
 	border: none;
 	cursor: pointer;
-	margin-right: 0.5rem;
+	/*margin-right: 0.5rem; */
 	transition: opacity 0.2s ease-in;
 	outline: none;
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
@@ -967,6 +978,8 @@ iframe{
 
 .btn-rounded {
 	border-radius: 5px;
+	margin-bottom: 200px;
+	margin-left: 400px;
 }
 
 .btn-xl {
@@ -1104,20 +1117,7 @@ iframe{
     font-size: 60px;
   }
 
-  .carousel-item {
-	width: 900px;
-	height: 520px;
-	margin-left: 106px;
-	border-radius: 5px;
-	counter-increment: carousel-cell;
-	transition: transform 0.5s;
-	transform: scale(1);
-/*	margin-bottom:100px;
-	border-radius: 5px;
-	counter-increment: carousel-cell;
-	transition: transform 0.5s;
-	transform: scale(1); */
-  }
+
 
   .featured-title2 {
 	width: 200px;

@@ -39,8 +39,6 @@
 
 <body id="content" style="font-family: 'Noto Sans JP', sans-serif;">
 
-  <div class = "container">
-
 <!--------------------------Created a navigation bar to contain the menu list ------------------------>
   <div class="navbar">
     <div class="navbar-container">
@@ -97,65 +95,41 @@
     </div> -->
 
   
-    
-
+  <div class = "container">
+  
+  <!---------------------Added Movie Slider/Carousel to the home page-------------------->
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
       </div>
+
+      <!------------------MOVIE-1-------------------->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="static\3.jpg" class="d-block w-100" alt="...">
+          <img src="static\movie_1.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block"> 
-            <img class="featured-title" src="static\3_logo.png" alt="">
+            <img class="featured-title" src="static\movie1_logo.png" alt="">
           </div>
         </div>
-          <!--play-btn******************************************-->
-       <!--   <div class ="play-btn-container">
-            <div class = "play-btn">
-              <a href="#">
-                <i class = "fa fa-play" aria-hidden="true"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        Video-full-movie*****************************************
-        <div id = "play" class = "play">
-          closebtn
-          <a href = "javascript:void" class = "close-movie">
-            <i class = "fa fa-times"></i>
-          </a> -->
-
-          <!---movie-->
-        <!--  <div class = "play-movie">
-            <video id = "m-video" controls>
-              source src = "https://www.youtube.com/watch?v=AXPC02H_pHY">
-            </video>
-          </div>
-        </div>  -->
-
-        <div class="carousel-item">
-          
-          <img src="static\2.jpg" class="d-block w-100" alt="...">
+         
+        <!------------------MOVIE-2-------------------->
+        <div class="carousel-item"> 
+          <img src="static\movie_2.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h1 class="logo">The Lost City</h1>
-        <!--  <img class="featured-title" src="static\title.png" alt="">
-            <p class="featured-desc">Jack Harper is one of the last few drone repairmen stationed on Earth. Part of a massive operation to extract vital resources after decades of war with a terrifying threat known as the Scavs, Jack’s mission is nearly complete. His existence is brought crashing down when he rescues a beautiful stranger from a downed spacecraft. Her arrival triggers a chain of events that forces him to question everything he knows and puts the fate of humanity in his hands.</p>
-            <button class="featured-button">WATCH</button> --> 
           </div>
         </div>
+
+        <!------------------MOVIE-3-------------------->
         <div class="carousel-item">
-          <img src="static\1.jpg" class="d-block w-100" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-           <!-- <h5>Stranger Things</h5>
-            <p>Some representative placeholder content for the third slide.</p> -->
-          </div>
+          <img src="static\movie_3.jpg" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block"></div>
         </div>
 
       </div>
+
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -166,73 +140,9 @@
       </button>
     </div>
 
-  
-    
+  <!----------------script for adding carousel-component to the home-page--------------------->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-  
 
-
-<!--<div class = "navbar"> 
-<div class="navbar-container">
-  <div class="menu-container">
-    <ul class="menu-list">
-        <li class="menu-list-item active">Home</li>
-        <li class="menu-list-item">Movies</li>
-        <li class="menu-list-item">Series</li>
-        <li class="menu-list-item">Popular</li>
-        <li class="menu-list-item">Trends</li>
-
-    </ul>
-  </div>
-  <div class="profile-container">
-    <img class="profile-picture" src="static\profile.JPG" alt="">
-    <div class="profile-text-container">
-        <span class="profile-text">Profile</span>
-        <i class="fas fa-caret-down"></i>
-    </div>
-    <div class="toggle">
-        <i class="fas fa-moon toggle-icon"></i>
-        <i class="fas fa-sun toggle-icon"></i>
-        <div class="toggle-ball"></div>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="container">
-  <div class="content-container">
-      <div class="featured-content"
-          style="background: url('https://images8.alphacoders.com/511/511265.jpg');">
-          <img class="featured-title" src="static\title.png" alt="">
-          <p class="featured-desc">Jack Harper is one of the last few drone repairmen stationed on Earth. Part of a massive operation to extract vital resources after decades of war with a terrifying threat known as the Scavs, Jack’s mission is nearly complete. His existence is brought crashing down when he rescues a beautiful stranger from a downed spacecraft. Her arrival triggers a chain of events that forces him to question everything he knows and puts the fate of humanity in his hands.</p>
-          <span class = "green">9.8</span>
-        </div>
-  </div>
-</div> -->
-
-<!--<form class = "box" action = "home.html" method = "POST">
-
-<h1>
-   login
-</h1>
-<input type = "text" name = "" placeholder = "Enter Username" id = "username">
-<input type = "password" name = "" placeholder = "Enter Password" id = "password">
-<input type = "submit" name = "" value = "Login">
-</form> -->
-
- <!-- <header class="showcase">
-    <div class="showcase-top">
-      <img src="https://i.ibb.co/r5krrdz/logo.png" alt="" />
-      <a href="#" class="btn btn-rounded">Sign In</a>
-    </div>
-    <div class="showcase-content">
-      <h1>See what's next</h1>
-      <p>Watch anywhere. Cancel Anytime</p>
-      <a href="#" class="btn btn-xl"
-        >Watch Free For 30 Days <i class="fas fa-chevron-right btn-icon"></i
-      ></a>
-    </div>
-  </header> -->
 
 <div class="body-content">
 	<div class="ml-container" style="display: block;">
