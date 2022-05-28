@@ -4,6 +4,7 @@ const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&'+API_KEY;
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 const searchURL = BASE_URL + '/search/movie?'+API_KEY;
 
+/**********************For Genre_Based Recommendation System *************************/
 const genres = [
   {
     "id": 28,
@@ -90,6 +91,8 @@ const tagsEl = document.getElementById('tags');
 
 var selectedGenre = []
 setGenre();
+
+/********************** Function to get movies based on the selected tags of genre *************************/
 function setGenre() {
     tagsEl.innerHTML= '';
     genres.forEach(genre => {
@@ -119,6 +122,7 @@ function setGenre() {
     })
 }
 
+/**********************Function to hihglight the selected genre tag*************************/
 function highlightSelection() {
   const tags = document.querySelectorAll('.tag');
   tags.forEach(tag => {
@@ -134,6 +138,7 @@ function highlightSelection() {
 
 }
 
+/**********************Function to clear selected tags*************************/
 function clearBtn(){
   let clearBtn = document.getElementById('clear');
   if(clearBtn){
@@ -167,22 +172,6 @@ ball.addEventListener("click", () => {
 });
 
 
-// fetching video details
-
-/*fetch('${movie_detail_http}${movie_id}/videos?' + new URLSearchParams({api_key: api_key}))
-.then(res => res.json())
-.then(data => {
-  console.log(data);
-  let trailerContainer = document.querySelector('.trailer-container');
-
-  let maxClips = (data.results.length < 4) ? 4: data.results.length;
-
-  for(let i = 0; i < maxClips; i++){
-    trailerContainer.innerHTML += '<iframe src="https://youtube.com/embed/${data.results[i].key}" title="YouTube video player" frameborder="0" allow=api_key; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-  }
-}) */
-
-
 getMovies(API_URL);
 
 function getMovies(url) {
@@ -191,32 +180,8 @@ function getMovies(url) {
         console.log(data.results)
         
             showMovies(data.results);
-          /*  currentPage = data.page;
-            nextPage = currentPage + 1;
-            prevPage = currentPage - 1;
-            totalPages = data.total_pages;
-
-            current.innerText = currentPage;
-
-            if(currentPage <= 1){
-              prev.classList.add('disabled');
-              next.classList.remove('disabled')
-            }else if(currentPage>= totalPages){
-              prev.classList.remove('disabled');
-              next.classList.add('disabled')
-            }else{
-              prev.classList.remove('disabled');
-              next.classList.remove('disabled')
-            }
-
-            tagsEl.scrollIntoView({behavior : 'smooth'})
-
-        }else{
-            main.innerHTML= `<h1 class="no-results">No Results Found</h1>`
-        }   */
        
     })
-
 }
 
 function showMovies(data) {
@@ -251,13 +216,14 @@ function showMovies(data) {
   })
 }
 
-/* Close when someone clicks on the "x" symbol inside the overlay */
+/****************Close when someone clicks on the "x"/close symbol inside the overlay**************/
 function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
 
 const overlayContent = document.getElementById('overlay-content');
-/* Open when someone clicks on the span element */
+
+/**************Open when someone clicks on the span element **************/
 function openNav(movie) {
   let id = movie.id;
   fetch(BASE_URL + '/movie/'+id+'/videos?'+API_KEY).then(res => res.json()).then(videoData => {
@@ -302,7 +268,7 @@ function openNav(movie) {
   })
 }
 
-
+/********function to get color based on the IMDB ratings of the movies **********/
 function getColor(vote) {
   if(vote>= 8){
       return 'green'
@@ -314,7 +280,7 @@ function getColor(vote) {
 }
 
 $(function() {
-  // Button will be disabled until we type anything inside the input field
+  /*******Button will be disabled until we type anything inside the input field******/
   const source = document.getElementById('autoComplete');
   const inputHandler = function(e) {
     if(e.target.value==""){
@@ -339,14 +305,14 @@ $(function() {
   });
 });
 
-// will be invoked when clicking on the recommended movies
+/********this function will be invoked when clicked on the recommended movies*********/
 function recommendcard(e){
   var my_api_key = '6d68a00f1b47054bb4ab00965d3e1416';
   var title = e.getAttribute('title'); 
   load_details(my_api_key,title);
 }
 
-// get the basic details of the movie from the API (based on the name of the movie)
+/**function to get the basic details of the movie from the API (based on the name of the movie)**/
 function load_details(my_api_key,title){
   $.ajax({
     type: 'GET',
@@ -374,7 +340,7 @@ function load_details(my_api_key,title){
   });
 }
 
-// passing the movie name to get the similar movies from python's flask
+/***passing the movie name to get the similar movies from python's flask***/
 function movie_recs(movie_title,movie_id,my_api_key){
   $.ajax({
     type:'POST',
@@ -404,7 +370,7 @@ function movie_recs(movie_title,movie_id,my_api_key){
   }); 
 }
 
-// get all the details of the movie using the movie id.
+/***function to get all the details of the movie using the movie id***/
 function get_movie_details(movie_id,my_api_key,arr,movie_title) {
   $.ajax({
     type:'GET',
@@ -419,7 +385,83 @@ function get_movie_details(movie_id,my_api_key,arr,movie_title) {
   });
 }
 
-// passing all the details to python's flask for displaying and scraping the movie reviews using imdb id
+
+
+/***function to get the details of individual cast****/
+function get_individual_cast(movie_cast,my_api_key) {
+    cast_bdays = [];
+    cast_bios = [];
+    cast_places = [];
+    for(var cast_id in movie_cast.cast_ids){
+      $.ajax({
+        type:'GET',
+        url:'https://api.themoviedb.org/3/person/'+movie_cast.cast_ids[cast_id]+'?api_key='+my_api_key,
+        async:false,
+        success: function(cast_details){
+          cast_bdays.push((new Date(cast_details.birthday)).toDateString().split(' ').slice(1).join(' '));
+          cast_bios.push(cast_details.biography);
+          cast_places.push(cast_details.place_of_birth);
+        }
+      });
+    }
+    return {cast_bdays:cast_bdays,cast_bios:cast_bios,cast_places:cast_places};
+  }
+
+
+
+/***getting posters for all the recommended movies***/
+function get_movie_posters(arr,my_api_key){
+  var arr_poster_list = []
+  for(var m in arr) {
+    $.ajax({
+      type:'GET',
+      url:'https://api.themoviedb.org/3/search/movie?api_key='+my_api_key+'&query='+arr[m],
+      async: false,
+      success: function(m_data){
+        arr_poster_list.push('https://image.tmdb.org/t/p/original'+m_data.results[0].poster_path);
+      },
+      error: function(){
+        alert("Invalid Request!");
+        $("#loader").delay(500).fadeOut();
+      },
+    })
+  }
+  return arr_poster_list;
+}
+
+
+/**getting the details of the top 3 cast for the requested movie**/
+function get_movie_cast(movie_id,my_api_key){
+  cast_ids= [];
+  cast_names = [];
+  cast_chars = [];
+  cast_profiles = [];
+
+  top_10 = [0,1,2,3,4,5,6,7,8,9];
+  $.ajax({
+    type:'GET',
+    url:"https://api.themoviedb.org/3/movie/"+movie_id+"/credits?api_key="+my_api_key,
+    async:false,
+    success: function(my_movie){
+      top_cast = [0, 1, 2];
+      for(var my_cast in top_cast){
+        cast_ids.push(my_movie.cast[my_cast].id)
+        cast_names.push(my_movie.cast[my_cast].name);
+        cast_chars.push(my_movie.cast[my_cast].character);
+        cast_profiles.push("https://image.tmdb.org/t/p/original"+my_movie.cast[my_cast].profile_path);
+      }
+    },
+    error: function(){
+      alert("Invalid Request!");
+      $("#loader").delay(500).fadeOut();
+    }
+  });
+
+  return {cast_ids:cast_ids,cast_names:cast_names,cast_chars:cast_chars,cast_profiles:cast_profiles};
+}
+
+
+/***passing all the details to python's flask for displaying and scraping the movie reviews using imdb id***/
 function show_details(movie_details,arr,movie_title,my_api_key,movie_id){
   var imdb_id = movie_details.imdb_id;
   var poster = 'https://image.tmdb.org/t/p/original'+movie_details.poster_path;
@@ -483,157 +525,4 @@ function show_details(movie_details,arr,movie_title,my_api_key,movie_id){
       $(window).scrollTop(0);
     }
   });
-}
-
-// get the details of individual cast
-function get_individual_cast(movie_cast,my_api_key) {
-    cast_bdays = [];
-    cast_bios = [];
-    cast_places = [];
-    for(var cast_id in movie_cast.cast_ids){
-      $.ajax({
-        type:'GET',
-        url:'https://api.themoviedb.org/3/person/'+movie_cast.cast_ids[cast_id]+'?api_key='+my_api_key,
-        async:false,
-        success: function(cast_details){
-          cast_bdays.push((new Date(cast_details.birthday)).toDateString().split(' ').slice(1).join(' '));
-          cast_bios.push(cast_details.biography);
-          cast_places.push(cast_details.place_of_birth);
-        }
-      });
-    }
-    return {cast_bdays:cast_bdays,cast_bios:cast_bios,cast_places:cast_places};
-  }
-
-// getting the details of the cast for the requested movie
-function get_movie_cast(movie_id,my_api_key){
-    cast_ids= [];
-    cast_names = [];
-    cast_chars = [];
-    cast_profiles = [];
-
-    top_10 = [0,1,2,3,4,5,6,7,8,9];
-    $.ajax({
-      type:'GET',
-      url:"https://api.themoviedb.org/3/movie/"+movie_id+"/credits?api_key="+my_api_key,
-      async:false,
-      success: function(my_movie){
-        top_cast = [0, 1, 2];
-      /*  if(my_movie.cast.length>=10){
-          top_cast = [0,1,2,3,4,5,6,7,8,9];
-        }
-        else {
-          top_cast = [0,1,2,3,4];
-        } */
-        for(var my_cast in top_cast){
-          cast_ids.push(my_movie.cast[my_cast].id)
-          cast_names.push(my_movie.cast[my_cast].name);
-          cast_chars.push(my_movie.cast[my_cast].character);
-          cast_profiles.push("https://image.tmdb.org/t/p/original"+my_movie.cast[my_cast].profile_path);
-        }
-      },
-      error: function(){
-        alert("Invalid Request!");
-        $("#loader").delay(500).fadeOut();
-      }
-    });
-
-    return {cast_ids:cast_ids,cast_names:cast_names,cast_chars:cast_chars,cast_profiles:cast_profiles};
-  }
-
-// getting posters for all the recommended movies
-function get_movie_posters(arr,my_api_key){
-  var arr_poster_list = []
-  for(var m in arr) {
-    $.ajax({
-      type:'GET',
-      url:'https://api.themoviedb.org/3/search/movie?api_key='+my_api_key+'&query='+arr[m],
-      async: false,
-      success: function(m_data){
-        arr_poster_list.push('https://image.tmdb.org/t/p/original'+m_data.results[0].poster_path);
-      },
-      error: function(){
-        alert("Invalid Request!");
-        $("#loader").delay(500).fadeOut();
-      },
-    })
-  }
-  return arr_poster_list;
-}
-
-
-// getting recommendations
-function get_recommendations(movie_id, my_api_key) {
-  rec_movies = [];
-  rec_posters = [];
-  rec_movies_org = [];
-  rec_year = [];
-  rec_vote = [];
-  
-  $.ajax({
-    type: 'GET',
-    url: "https://api.themoviedb.org/3/movie/"+movie_id+"/recommendations?api_key="+my_api_key,
-    async: false,
-    success: function(recommend) {
-      for(var recs in recommend.results) {
-        rec_movies.push(recommend.results[recs].title);
-        rec_movies_org.push(recommend.results[recs].original_title);
-        rec_year.push(new Date(recommend.results[recs].release_date).getFullYear());
-        rec_vote.push(recommend.results[recs].vote_average);
-        if(recommend.results[recs].poster_path){
-          rec_posters.push("https://image.tmdb.org/t/p/original"+recommend.results[recs].poster_path);
-        }
-        else {
-          rec_posters.push("static/default.jpg");
-        }
-      }
-    },
-    error: function(error) {
-      alert("Invalid Request! - "+error);
-      $("#loader").delay(500).fadeOut();
-    }
-  });
-  return {rec_movies:rec_movies,rec_movies_org:rec_movies_org,rec_posters:rec_posters,rec_year:rec_year,rec_vote:rec_vote};
-}
-
-// getting closest match to the requested movie name using Levenshtein distance
-function similarity(s1, s2) {
-  var longer = s1;
-  var shorter = s2;
-  if (s1.length < s2.length) {
-    longer = s2;
-    shorter = s1;
-  }
-  var longerLength = longer.length;
-  if (longerLength == 0) {
-    return 1.0;
-  }
-  return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
-}
-
-function editDistance(s1, s2) {
-  s1 = s1.toLowerCase();
-  s2 = s2.toLowerCase();
-
-  var costs = new Array();
-  for (var i = 0; i <= s1.length; i++) {
-    var lastValue = i;
-    for (var j = 0; j <= s2.length; j++) {
-      if (i == 0)
-        costs[j] = j;
-      else {
-        if (j > 0) {
-          var newValue = costs[j - 1];
-          if (s1.charAt(i - 1) != s2.charAt(j - 1))
-            newValue = Math.min(Math.min(newValue, lastValue),
-              costs[j]) + 1;
-          costs[j - 1] = lastValue;
-          lastValue = newValue;
-        }
-      }
-    }
-    if (i > 0)
-      costs[s2.length] = lastValue;
-  }
-  return costs[s2.length];
 }
