@@ -128,7 +128,7 @@
         {% for name, details in casts.items() if not casts.hidden %}
           <div class="castcard card" style="width: 15rem;" title="Click to know more about {{name}}" data-toggle="modal" data-target="#{{details[0]}}">
             <div class="imghvr">
-              <img class="card-img-top cast-img" id="{{details[0]}}" height="360" width="240" alt="{{name}} - profile" src="{{details[2]}}">
+              <img class="card-img-top cast-img" id="{{details[0]}}" height="340" width="220" alt="{{name}} - profile" src="{{details[2]}}">
               <figcaption class="fig">
                 <button class="card-btn btn btn-danger"> Know More </button>
               </figcaption>
@@ -155,7 +155,7 @@
             <thead>
                 <tr>
                     <th class="text-center" scope="col" style="width: 75%">REVIEWS</th>
-                    <th class="text-center" scope="col">GOOD OR BAD</th>
+                    <th class="text-center" scope="col">POSITIVE or NEGATIVE</th>
                 </tr>
             </thead>
     
@@ -163,13 +163,9 @@
 		      {% for review, status in reviews.items() if not reviews.hidden %}
 		      <tr style="background: color #000;;">
               	  <justify><td>{{review}}</td></justify>
-	              <td><center>
-	                  {{status}} 
-	                  {% if status =='Good' %}
-	                    :-)
-	                  {% else %}
-	                    :-(
-	                  {% endif %}
+	              <td>
+                  <center>
+	                  {{status}}  
 	                </center>
 	              </td>
           		</tr>

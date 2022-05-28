@@ -9,20 +9,19 @@ import urllib.request
 import pickle
 import requests
 
-# load the nlp model and tfidf vectorizer from disk
-filename = 'D:/Microsoft/movie cinema rec/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/.ipynb_checkpoints/nlp_model_new.pkl'
-#filename = 'D:/Microsoft/movie cinema rec/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/nlp_model.pkl'
+################## loaded the NLP model and tfidf vectorizer to carry out the sentiment Analysis############## 
+filename = 'C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/Sentiment_NLP_Model.pkl'
 clf = pickle.load(open(filename, 'rb'))
-#vectorizer = pickle.load(open('D:/Microsoft/movie cinema rec/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/.ipynb_checkpoints/tranform_new.pkl', 'rb'))
-vectorizer = pickle.load(open('D:/Microsoft/movie cinema rec/AJAX-Movie-Recommendation-System-with-Sentiment-Analysis/tranform.pkl', 'rb'))
+vectorizer = pickle.load(open('C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/file_transform.pkl', 'rb'))
 
 
 def create_similarity():
-   # data = pd.read_csv('main_data.csv')
     data = pd.read_csv('C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/main_data_till_2022.csv')
+
     # creating a count matrix
     cv = CountVectorizer()
     count_matrix = cv.fit_transform(data['comb'])
+
     # creating a similarity score matrix
     similarity = cosine_similarity(count_matrix)
     return data,similarity
@@ -35,12 +34,12 @@ def rcmd(m):
     except:
         data, similarity = create_similarity()
     if m not in data['movie_title'].unique():
-        return('Sorry! The movie you requested is not in our database. Please check the spelling or try with some other movies')
+        return('Sorry! Your search did not find any matches. Please check the spelling or try with some other movies')
     else:
         i = data.loc[data['movie_title']==m].index[0]
         lst = list(enumerate(similarity[i]))
         lst = sorted(lst, key = lambda x:x[1] ,reverse=True)
-        lst = lst[1:11] # excluding first item since it is the requested movie itself
+        lst = lst[1:11] ##starting from the 2nd item because the first item is the requested movie itself##
         l = []
         for i in range(len(lst)):
             a = lst[i][0]
@@ -54,6 +53,7 @@ def convert_to_list(my_list):
     my_list[-1] = my_list[-1].replace('"]','')
     return my_list
 
+#function to get suggestions while typing out the movie in the placeholder
 def get_suggestions():
     data = pd.read_csv('C:/Users/rush2/Documents/Movieflix/python_notebooks_recommendation_engine/main_data_till_2022.csv')
     return list(data['movie_title'].str.capitalize())
@@ -128,7 +128,7 @@ def recommend():
 
     cast_details = {cast_names[i]:[cast_ids[i], cast_profiles[i], cast_bdays[i], cast_places[i], cast_bios[i]] for i in range(len(cast_places))}
 
-    # web scraping to get user reviews from IMDB site
+    # web scraping to get audience's reviews from TMDB site
     sauce = urllib.request.urlopen('https://www.imdb.com/title/{}/reviews?ref_=tt_ov_rt'.format(imdb_id)).read()
     soup = bs.BeautifulSoup(sauce,'lxml')
     soup_result = soup.find_all("div",{"class":"text show-more__control"})
@@ -142,12 +142,12 @@ def recommend():
             movie_review_list = np.array([reviews.string])
             movie_vector = vectorizer.transform(movie_review_list)
             pred = clf.predict(movie_vector)
-            reviews_status.append('Good' if pred else 'Bad')
+            reviews_status.append('Positive' if pred else 'Negative')
 
-    # combining reviews and comments into a dictionary
+    ### combining comments and reviews into a dictionary ###
     movie_reviews = {reviews_list[i]: reviews_status[i] for i in range(len(reviews_list))}     
 
-    # passing all the data to the html file
+    ### passing all the data to the recommend html file of static folder ###
     return render_template('recommend.html',title=title,poster=poster,overview=overview,vote_average=vote_average,
         vote_count=vote_count,release_date=release_date,runtime=runtime,status=status,genres=genres,
         movie_cards=movie_cards,reviews=movie_reviews,casts=casts,cast_details=cast_details)
