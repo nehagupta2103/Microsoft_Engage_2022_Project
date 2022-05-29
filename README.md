@@ -8,21 +8,20 @@
 ## Demo Version
 A demo version is automatically deployed for this repository:
 </br>
-- Deployment -
-- Demo Video - 
+- Demo Video - https://drive.google.com/file/d/1bf8H5PVs_0ScNQM1RuLXkWxGQ8uB4urQ/view?usp=sharing
 
 ## Local Installation
 </br>
 
 ### Steps
 - `git clone <repository-url>` where `<repository-url>`is the link to the forked repository
-- `cd Movieflix`
+- `cd Microsoft_Engage_22_Project`
 
 Note : If you want to contribute, first fork the original repository and clone the forked repository into your local machine followed by `cd` into the directory
 
 ```
-git clone https://github.com/USERNAME/Microsoft-Engage-21-Project.git
-cd Movieflix
+git clone https://github.com/USERNAME/Microsoft_Engage_22_Project.git
+cd Microsoft_Engage_22_Project
 ```
 
 #### Steps to run the project on your local machine
